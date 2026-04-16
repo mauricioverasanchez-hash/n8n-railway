@@ -1,7 +1,14 @@
-FROM n8nio/n8n:latest
+FROM node:20-bullseye-slim
 
-USER root
+RUN apt-get update && \
+    apt-get install -y ffmpeg pandoc && \
+    rm -rf /var/lib/apt/lists/*
 
-RUN ls /usr/bin/ && ls /bin/
+RUN npm install -g n8n
 
-USER node
+ENV N8N_PORT=5678
+ENV N8N_PROTOCOL=http
+
+EXPOSE 5678
+
+CMD ["n8n", "start"]
