@@ -2,6 +2,6 @@ FROM n8nio/n8n
 
 USER root
 
-RUN apt-get update && apt-get install -y ffmpeg pandoc && rm -rf /var/lib/apt/lists/*
+RUN node --version && cat /etc/os-release
 
 USER node
