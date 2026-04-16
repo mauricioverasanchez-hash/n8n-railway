@@ -2,6 +2,6 @@ FROM n8nio/n8n
 
 USER root
 
-RUN apk add --no-cache ffmpeg pandoc
+RUN apt-get update && apt-get install -y ffmpeg pandoc && rm -rf /var/lib/apt/lists/*
 
 USER node
